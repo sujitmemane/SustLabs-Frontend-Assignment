@@ -1,15 +1,18 @@
 import HeatMap from "react-heatmap-grid";
 import { data as importedData } from "../content";
+import '../App.css'
+
+
+
 
 const xLabels = new Array(24).fill(0).map((_, i) => `${i}`);
 const xLabelsVisibility = new Array(24)
   .fill(0)
   .map((_, i) => (i % 2 === 0 ? true : false));
 
-const yLabels = importedData.map((element) => `${element.day.slice(-2)}th`);
-console.log(yLabels);
+const yLabels = importedData.map((element) => element.day.slice(-4)).sort((a,b)=>b-a).map(element=>element.slice(-2));
 
-const outputData = importedData
+const outputData = importedData.sort((a, b) => b.day.localeCompare(a.day))
   .map((element) => element.hours)
   .map((innerArray) => innerArray.map((obj) => obj.record_count));
 
@@ -33,18 +36,18 @@ const cellStyle = (background, value, min, max, data, x, y) => {
 
 const Table = () => {
   return (
-    <div className="text-md">
+    <div className="text-sm m-2 md:text-md ">
       <HeatMap
         xLabels={xLabels}
         yLabels={yLabels}
         xLabelsLocation={"top"}
         data={outputData}
         xLabelsVisibility={xLabelsVisibility}
-        xLabelWidth={40}
+        xLabelWidth={20}
         background="grey"
         cellStyle={cellStyle}
         squares={true}
-        height={25}
+        height={22}
       />
     </div>
   );
