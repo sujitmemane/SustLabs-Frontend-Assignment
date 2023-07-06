@@ -10,7 +10,7 @@ const xLabelsVisibility = new Array(24)
   .fill(0)
   .map((_, i) => (i % 2 === 0 ? true : false));
 
-const yLabels = importedData.map((element) => element.day.slice(-4)).sort((a,b)=>b-a).map(element=>element.slice(-2));
+const yLabels = importedData.map((element) => element.day.slice(-4)).sort((a,b)=>b-a).map(element=>`${element.slice(-2)}th`);
 
 const outputData = importedData.sort((a, b) => b.day.localeCompare(a.day))
   .map((element) => element.hours)
@@ -36,7 +36,7 @@ const cellStyle = (background, value, min, max, data, x, y) => {
 
 const Table = () => {
   return (
-    <div className="text-sm m-2 md:text-md ">
+    <div className="text-sm m-2 md:text-md w-full ">
       <HeatMap
         xLabels={xLabels}
         yLabels={yLabels}
@@ -47,7 +47,7 @@ const Table = () => {
         background="grey"
         cellStyle={cellStyle}
         squares={true}
-        height={22}
+        height={30}
       />
     </div>
   );
