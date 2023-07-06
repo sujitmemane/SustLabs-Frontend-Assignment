@@ -7,6 +7,9 @@ This repository contains the code for the frontend assignment provided by SustLa
 The project is built using React, a popular JavaScript library for building user interfaces. It utilizes Tailwind CSS, a utility-first CSS framework, for styling the components and layouts. Additionally, React Heatmap Grid, a React component library, is used to create the heatmap grid visualization.
 
 
+##  Live 
+[Demo of Assignment](https://sust-labs-frontend-assignment.vercel.app/)
+
 
 # Setup Instructions
 To set up the project locally, follow these steps:
